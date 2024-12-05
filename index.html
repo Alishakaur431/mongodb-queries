@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 1</title>
+    <style>
+        
+        code {
+            display: block;
+            
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 14px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>MongoDB Queries</h1>
+    <h2>Alisha kaur</h2>
+    <h3>Enrollment no. 2203031080202</h3>
+    
+    <h5>Query1</h5>
+    <code>
+1. db.movies.find({runtime:{$gt:150}})
+   db.movies.find({rating:{$gt:8.5}})
+   db.movies.find({$and:[{year:{$gt:2000,$lt:2015}}]})
+    </code>
+    
+    <h5>Query2</h5>
+    <code>
+2. db.movies.find({
+      director: "Christopher Nolan", 
+      isOscarWinner: true, 
+      boxOffice: { $gt: 700 }, 
+      streamingOn: "Netflix"
+   })
+    </code>
+    
+    <h5>Query3</h5>
+    <code>
+3. db.movies.find({
+      "specialFeatures.behindTheScenes": true, 
+      "specialFeatures.deletedScenes": true
+   })
+    </code>
+    
+    <h5>Query4</h5>
+    <code>
+4. db.movies.find({
+      $or: [ 
+          { cast: "Carrie-Anne Moss" }, 
+          { cast: "Morgan Freeman" }
+      ],
+      languages: { $exists: true },
+      "streamingOn.1": { $exists: true }
+   })
+    </code>
+
+    <h5>Query5
+    <code>
+5. db.movies.updateOne(
+       { title: "Inception" }, 
+       { $set: { languages: "Chinese" } }
+   )
+    </code>
+    
+    <h5>Query6</h5>
+    <code>
+6. db.movies.updateMany(
+       { director: "Christopher Nolan" }, 
+       { $set: { cast: "Michael Caine" } }
+   )
+    </code>
+    
+    <h5>Query7</h5>
+    <code>
+7. db.movies.updateMany(
+       { runtime: { $gt: 140 } }, 
+       { $set: { streamingOn: "Disney+" } }
+   )
+    </code>
+    
+    <h5>Query8</h5>
+    <code>
+8. db.movies.find({
+       genre: { $size: 2 }, 
+       boxOffice: { $exists: true },
+       specialFeatures: { $exists: false }
+   })
+    </code>
+
+    <h5>Query9</h5>
+    <code>
+9. db.movies.deleteMany({ rating: { $lt: 8.0 } });
+    </code>
+    
+    <h5>Query10</h5>
+    <code>
+10. db.movies.updateMany(
+        { year: { $lt: 2000 } }, 
+        { $pull: { streamingOn: "Netflix" } }
+    );
+    </code>
+    
+    <h5>Query11</h5>
+    <code>
+11. db.movies.find({
+        $expr: { $gt: ["$boxOffice", { $multiply: ["$runtime", 10] }] }
+    });
+    </code>
+    
+    <h5>Query13</h5>
+    <code>
+13. db.movies.find({ genre: { $all: ["Action", "Sci-Fi"] } });
+    </code>
+    
+    <h5>Query14</h5>
+    <code>
+14. db.movies.find({ "genre.0": "Action" });
+    </code>
+    
+    <h5>Query15</h5>
+    <code>
+15. db.movies.find({ cast: { $size: 3 } });
+    </code>
+
+    
+<body>
+    <h3>Progress: 13/15</h3>
+    <div style="width: 300px; border: 1px solid #000;">
+        <div style="width: 86.67%; background-color: #4caf50; height: 20px;"></div>
+    </div>
+    <h3>86%</h3>
+</body>
+</html>
